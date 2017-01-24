@@ -6,6 +6,7 @@
 #include <WPILib.h>
 #include <Commands/Command.h>
 #include <CANTalon.h>
+#include <AHRS.h>
 
 #include "OI.h"
 #include "Subsystems/ExampleSubsystem.h"
@@ -30,4 +31,5 @@ public:
 	static std::unique_ptr<CANTalon> steer3;
 	static std::unique_ptr<CANTalon> steer4;
 	static std::unique_ptr<CANTalon> arm;
+	static std::unique_ptr<AHRS> gyro;
 };

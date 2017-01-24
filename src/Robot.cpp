@@ -9,10 +9,12 @@
 
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
+#include "CastUtil.h"
 
 class Robot: public frc::IterativeRobot {
 public:
 	void RobotInit() override {
+		printf("RobotInit running.\r\n");
 		chooser.AddDefault("Default Auto", new ExampleCommand());
 		// chooser.AddObject("My Auto", new MyAutoCommand());
 		frc::SmartDashboard::PutData("Auto Modes", &chooser);
@@ -23,6 +25,11 @@ public:
 		CommandBase::steer3 = std::make_unique<CANTalon>(3);
 		CommandBase::steer4 = std::make_unique<CANTalon>(4);
 		CommandBase::arm = std::make_unique<CANTalon>(6);
+
+		CommandBase::gyro = std::make_unique<AHRS>(SerialPort::Port::kUSB1);
+	}
+
+	void RobotPeriodic() override {
 	}
 
 	/**
@@ -81,6 +88,9 @@ public:
 
 	void TeleopPeriodic() override {
 		frc::Scheduler::GetInstance()->Run();
+	}
+
+	void TestInit() override {
 	}
 
 	void TestPeriodic() override {

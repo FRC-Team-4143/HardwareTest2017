@@ -14,8 +14,8 @@ std::unique_ptr<CANTalon> CommandBase::steer2;
 std::unique_ptr<CANTalon> CommandBase::steer3;
 std::unique_ptr<CANTalon> CommandBase::steer4;
 std::unique_ptr<CANTalon> CommandBase::arm;
+std::unique_ptr<AHRS> CommandBase::gyro;
 
 CommandBase::CommandBase(const std::string &name)
 :	frc::Command(name) {
-
 }
